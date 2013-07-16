@@ -1,11 +1,12 @@
 <div class="flast_messages">
   <% if flash.any? %>
     <p style='color:green;'><%= flash[:success] %></p>
-
-    <p>This is the link to edit your post DO NOT LOSE IT:</p>
-    <p>
-      <%= link_to "localhost:3000/post/"+flash[:token], edit_post_path(flash[:token])  %>
-    </p>
+    <% if flash[:token] %>
+      <p>This is the link to edit your post DO NOT LOSE IT:</p>
+      <p>
+        <%= link_to "localhost:3000/post/"+flash[:token], edit_post_path(flash[:token])  %>
+      </p>
+    <% end %>
   <% end %>
 </div>
 
