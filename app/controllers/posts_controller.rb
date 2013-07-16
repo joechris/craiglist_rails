@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @category = Category.find_by_name(params[:category_name])
-    @post = Post.find(params[:id])
+    @post = params[:id] ? Post.find(params[:id]) : Post.find_by_token(params[:token])
   end
 
   def new
@@ -22,8 +22,9 @@ class PostsController < ApplicationController
     else
       render 'new'
     end
-
   end
 
+  def token
 
+  end
 end

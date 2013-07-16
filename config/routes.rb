@@ -4,6 +4,8 @@ CraigslistJr::Application.routes.draw do
   get ':category_name' => 'posts#index'
   get '/post/new' => 'posts#new'
   post '/post/new' => 'posts#create'
+  get '/post/:token' => 'posts#show'
+
 
   scope ':category_name' do
     resources :posts, except: [:new, :create]
