@@ -1,7 +1,9 @@
-<h1>Posts Page</h1>
+<h1><%= @category.name.capitalize %></h1>
 
-<% @posts.each do |post| %>
-  <%= link_to post.title, post_path(post.category.name, post.id) %>
+<% @category.posts.each do |post| %>
+  <p><%= link_to post.title, post_path(post.category.name, post.id) %></p>
 <% end %>
+
+
 
 
