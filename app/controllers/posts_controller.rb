@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @category = Category.find_by_name(params[:category_name])
-    # @posts = Category.find_by_name(params[:category_name]).posts
+    redirect_to root_url if !@category
   end
 
   def show
