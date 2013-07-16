@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @category = Category.find_by_name(params[:category_name])
-    @post = params[:id] ? Post.find(params[:id]) : Post.find_by_token(params[:token])
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -24,7 +24,22 @@ class PostsController < ApplicationController
     end
   end
 
-  def token
+  def edit
+    @categories = Category.all
+    @post = Post.find_by_token(params[:token])
+  end
+
+  def update
+    @post = Post.find_by_token(params[:token])
+    @post.update_attributes(params[:post])
+    if @post.save
+      flash[:success] = "Successfully Updated Post"
+      redirect_to post_path(@post.category.name, @post)
+    else
+      render 'edit'
+    end
 
   end
+
+
 end

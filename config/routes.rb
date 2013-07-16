@@ -4,11 +4,12 @@ CraigslistJr::Application.routes.draw do
   get ':category_name' => 'posts#index'
   get '/post/new' => 'posts#new'
   post '/post/new' => 'posts#create'
-  get '/post/:token' => 'posts#show'
+  get '/post/:token' => 'posts#edit', as: 'edit_post'
+  put '/post/:token' => 'posts#update'
 
 
   scope ':category_name' do
-    resources :posts, except: [:new, :create]
+    resources :posts, except: [:new, :create, :edit, :update]
   end
 
   # The priority is based upon order of creation:
