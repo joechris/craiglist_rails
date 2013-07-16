@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     if @post.save
       flash[:success] = "Successfully create a new post"
-      redirect_to post_path(@post.category.id, @post)
+      redirect_to post_path(@post.category.name, @post)
     else
       render 'new'
     end
