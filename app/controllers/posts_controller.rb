@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   def edit
     @categories = Category.all
     @post = Post.find_by_token(params[:token])
+    redirect_to root_path if !@post
   end
 
   def update
