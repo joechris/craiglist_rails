@@ -3,7 +3,6 @@ CraigslistJr::Application.routes.draw do
 
   get ':category_name' => 'posts#index'
 
-  # get 'posts/:id' => 'posts#show', as: 'post'
 
   scope ':category_name' do
     resources :posts

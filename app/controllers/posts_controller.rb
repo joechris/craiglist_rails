@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   end
 
   def show
-
+    @category = Category.find_by_name(params[:category_name])
+    @post = Post.find(params[:id])
   end
 
 
