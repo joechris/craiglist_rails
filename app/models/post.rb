@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   belongs_to :category
   before_create :create_url_token
 
+  validates :title, :content, :presence => true
+
 
   private
     def create_url_token

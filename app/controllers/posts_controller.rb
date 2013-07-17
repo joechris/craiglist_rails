@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @post = Post.new(params[:post])
     if @post.save
       flash[:success] = "Successfully create a new post"
